@@ -1,7 +1,5 @@
 # Write your code here
 from typing import Optional, List
-from datetime import date
-
 from pydantic import BaseModel
 
 
