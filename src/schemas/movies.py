@@ -14,8 +14,8 @@ class MovieDetailResponseSchema(BaseModel):
     orig_title: str | None = None
     status: str | None = None
     orig_lang: str | None = None
-    budget: int | None = None
-    revenue: int | None = None
+    budget: float | None = None
+    revenue: float | None = None
     country: str | None = None
 
     class Config:
