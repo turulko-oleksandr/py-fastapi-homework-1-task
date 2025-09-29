@@ -37,7 +37,7 @@ async def list_movies(
     movies = result.scalars().all()
 
     for i in range(0, len(movies)):
-        movies[i].date = movies[i].date.strftime("%m/%d/%Y")
+        movies[i].date = movies[i].date.strftime("%Y-%m-%d") if movies[i].date else None
 
     base_path = request.url.path
     prev_page: Optional[str] = (
@@ -65,6 +65,7 @@ async def get_movie(movie_id: int, db: AsyncSession = Depends(get_db)):
     if not movie:
         raise HTTPException(status_code=404, detail="Movie with the given ID was not found.")
 
-    movie.date = movie.date.strftime("%Y-%m-%d")
+    if movie.date:
+        movie.date = movie.date.strftime("%Y-%m-%d")
 
     return movie
