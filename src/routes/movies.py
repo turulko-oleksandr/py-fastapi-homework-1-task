@@ -39,12 +39,12 @@ async def list_movies(
     for i in range(0, len(movies)):
         movies[i].date = movies[i].date.strftime("%Y-%m-%d") if movies[i].date else None
 
-    base_path = request.url.path
+    required_path = "/theater/movies/"
     prev_page: Optional[str] = (
-        f"{base_path}?page={page - 1}&per_page={per_page}" if page > 1 else None
+        f"{required_path}?page={page - 1}&per_page={per_page}" if page > 1 else None
     )
     next_page: Optional[str] = (
-        f"{base_path}?page={page + 1}&per_page={per_page}" if page < total_pages else None
+        f"{required_path}?page={page + 1}&per_page={per_page}" if page < total_pages else None
     )
 
     return {
